@@ -1,3 +1,4 @@
+import { InteractionService } from './interaction.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'interaction';
+  constructor(private interaction:InteractionService){}
+  greet(){
+this.interaction.sendMessage('Greeting some one')
+  }
+  appreciate(){
+this.interaction.sendMessage('weldone')
+  }
 }
