@@ -8,19 +8,26 @@ import { InteractionService } from '../interaction.service';
 })
 export class ChildComponent implements OnInit {
 msg:any
-msg1:any
+myDara='Child data'
+mydara='dara'
   constructor(private inter:InteractionService) { }
 
   ngOnInit(): void {
     this.inter.message$.subscribe((res:any)=>{
-      if(res=='Greeting some one'){
-        alert(res)
+      if(res=='Good morning'){
+        console.log(res);
+
         this.msg = res
-      }else if(res=='weldone'){
-        alert('Thanks')
-        this.msg1 = res
+      }else if(res=='Weldone'){
+        console.log(res)
+        this.msg = res
       }
     })
   }
-
+  sendToApp(){
+    this.inter.sendMessage(this.myDara)
+  }
+  resendToApp(){
+    this.inter.sendMessage(this.mydara)
+  }
 }
